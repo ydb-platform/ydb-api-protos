@@ -3,7 +3,7 @@ option cc_enable_arenas = true;
 
 package Ydb;
 
-option go_package = "github.com/YandexDatabase/ydb-go-genproto/protos/Ydb";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb";
 option java_package = "com.yandex.ydb.common";
 option java_outer_classname = "CommonProtos";
 

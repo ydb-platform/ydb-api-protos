@@ -3,7 +3,7 @@ option cc_enable_arenas = true;
 
 package Ydb.Coordination;
 
-option go_package = "github.com/YandexDatabase/ydb-go-genproto/protos/Ydb_Coordination";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Coordination";
 
 option java_package = "com.yandex.ydb.coordination";
 option java_outer_classname = "CoordinationProtos";

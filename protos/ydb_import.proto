@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";
 
 package Ydb.Import;
 
-option go_package = "github.com/YandexDatabase/ydb-go-genproto/protos/Ydb_Import";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Import";
 option java_package = "com.yandex.ydb.import_";
 
 /// Common

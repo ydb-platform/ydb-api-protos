@@ -6,7 +6,7 @@ import "ydb_operation.proto";
 
 package Ydb.PersQueue.ClusterDiscovery;
 
-option go_package = "github.com/YandexDatabase/ydb-go-genproto/protos/Ydb_PersQueue_ClusterDiscovery";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_PersQueue_ClusterDiscovery";
 
 option java_package = "com.yandex.ydb.persqueue.cluster_discovery";
 option cc_enable_arenas = true;

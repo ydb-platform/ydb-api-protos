@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Ydb.RateLimiter.V1;
 
-option go_package = "github.com/YandexDatabase/ydb-go-genproto/Ydb_RateLimiter_V1";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_RateLimiter_V1";
 
 option java_package = "com.yandex.ydb.rate_limiter.v1";
 option java_outer_classname = "RateLimiterGrpc";

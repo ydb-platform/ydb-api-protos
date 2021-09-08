@@ -3,7 +3,7 @@ option cc_enable_arenas = true;
 
 package Ydb.TableStats;
 
-option go_package = "github.com/YandexDatabase/ydb-go-genproto/protos/Ydb_TableStats";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_TableStats";
 option java_package = "com.yandex.ydb";
 
 // Describes select, update (insert, upsert, replace) and delete operations
