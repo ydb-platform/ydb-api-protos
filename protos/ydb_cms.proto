@@ -2,6 +2,8 @@ syntax = "proto3";
 option cc_enable_arenas = true;
 
 package Ydb.Cms;
+
+option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Cms";
 option java_package = "com.yandex.ydb.cms";
 
 import "kikimr/public/api/protos/ydb_operation.proto";
