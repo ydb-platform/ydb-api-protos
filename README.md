@@ -1,3 +1,3 @@
-# ydb-proto
+# YDB gRPC API Protobufs
 
-ydb-proto includes nested YDB proto for next code generation
+Protocol buffer definitions for YDB [gRPC](https://grpc.io/) API, including both service and message definitions.
