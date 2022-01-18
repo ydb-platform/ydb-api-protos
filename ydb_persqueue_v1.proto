@@ -35,41 +35,6 @@ service PersQueueService {
 
     rpc StreamingWrite(stream StreamingWriteClientMessage) returns (stream StreamingWriteServerMessage);
 
-    /**
-     * Creates Read Session
-     * Pipeline:
-     * client                  server
-     *         Init(Topics, ClientId, ...)
-     *        ---------------->
-     *         Init(SessionId)
-     *        <----------------
-     *         read1
-     *        ---------------->
-     *         read2
-     *        ---------------->
-     *         assign(Topic1, Cluster, Partition1, ...) - assigns and releases are optional
-     *        <----------------
-     *         assign(Topic2, Clutster, Partition2, ...)
-     *        <----------------
-     *         start_read(Topic1, Partition1, ...) - client must respond to assign request with this message. Only after this client will start recieving messages from this partition
-     *        ---------------->
-     *         release(Topic1, Partition1, ...)
-     *        <----------------
-     *         released(Topic1, Partition1, ...) - only after released server will give this parittion to other session.
-     *        ---------------->
-     *         start_read(Topic2, Partition2, ...) - client must respond to assign request with this message. Only after this client will start recieving messages from this partition
-     *        ---------------->
-     *         read data(data, ...)
-     *        <----------------
-     *         commit(cookie1)
-     *        ---------------->
-     *         committed(cookie1)
-     *        <----------------
-     *         issue(description, ...)
-     *        <----------------
-     */
-    rpc MigrationStreamingRead(stream MigrationStreamingReadClientMessage) returns (stream MigrationStreamingReadServerMessage);
-
     // Get information about reading
     rpc GetReadSessionsInfo(ReadInfoRequest) returns (ReadInfoResponse);
 
