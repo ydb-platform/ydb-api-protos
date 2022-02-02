@@ -1,7 +1,7 @@
 syntax = "proto3";
 option cc_enable_arenas = true;
 
-import "validation/validation.proto";
+import "annotations/validation.proto";
 import "ydb_common.proto";
 import "ydb_issue_message.proto";
 import "ydb_operation.proto";
@@ -9,6 +9,7 @@ import "ydb_query_stats.proto";
 import "ydb_value.proto";
 import "ydb_scheme.proto";
 import "ydb_status_codes.proto";
+import "ydb_formats.proto";
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
@@ -87,6 +88,8 @@ message TableIndexDescription {
     Status status = 4;
     // list of columns content to be copied in to index table
     repeated string data_columns = 6;
+    // Size of index data in bytes
+    uint64 size_bytes = 7;
 }
 
 // State of index building operation
@@ -144,6 +147,9 @@ message ColumnFamilyPolicy {
     // Storage settings for the column group (default to values in storage policy)
     StoragePool data = 2;
     StoragePool external = 3;
+
+    // When enabled table data will be kept in memory
+    // WARNING: DO NOT USE
     Ydb.FeatureFlag.Status keep_in_memory = 4;
 
     // Optionally specify whether data should be compressed
@@ -219,7 +225,7 @@ message ReplicationPolicy {
     // will be created in each availability zone.
     Ydb.FeatureFlag.Status create_per_availability_zone = 3;
     // If this feature in enabled then read-only replicas can be promoted
-    // to master.
+    // to leader.
     Ydb.FeatureFlag.Status allow_promotion = 4;
 }
 
@@ -293,6 +299,16 @@ message TtlSettings {
     // There is no guarantee that expired row will be deleted immediately upon
     // expiration. There may be a delay between the time a row expires and the
     // time that server deletes the row from the table.
+
+    // Ttl periodically runs background removal operations (BRO) on table's partitions.
+    // By default, there is:
+    // - no more than one BRO on the table;
+    // - BRO is started no more than once an hour on the same partition.
+    // Use options below to change that behavior.
+
+    // How often to run BRO on the same partition.
+    // BRO will not be started more often, but may be started less often.
+    uint32 run_interval_seconds = 3;
 }
 
 message StorageSettings {
@@ -308,7 +324,8 @@ message StorageSettings {
     StoragePool external = 4;
 
     // Optionally store large values in "external blobs"
-    // Don't use unless required, restrictions apply:
+    // WARNING: DO NOT USE
+    // This feature is experimental and should not be used, restrictions apply:
     // * Table cannot split/merge when this is enabled
     // * Table cannot be copied or backed up when this is enabled
     // * This feature cannot be disabled once enabled for a table
@@ -332,7 +349,8 @@ message ColumnFamily {
     // Optionally specify how data should be compressed
     Compression compression = 3;
 
-    // When enabled keeps data pages in memory
+    // When enabled table data will be kept in memory
+    // WARNING: DO NOT USE
     Ydb.FeatureFlag.Status keep_in_memory = 4;
 }
 
@@ -930,8 +948,16 @@ message BulkUpsertRequest {
     // It must contain all key columns but not necessarily all non-key columns.
     // Similar to UPSERT statement only values of specified columns will be updated.
     TypedValue rows = 2;
-
     Ydb.Operations.OperationParams operation_params = 3;
+
+    // You may set data_format + data instead of rows to insert data in serialized formats.
+    oneof data_format {
+        Ydb.Formats.ArrowBatchSettings arrow_batch_settings = 7;
+        Ydb.Formats.CsvSettings csv_settings = 8;
+    }
+
+    // It's last in the definition to help with sidecar patterns
+    bytes data = 1000;
 }
 
 message BulkUpsertResponse {
