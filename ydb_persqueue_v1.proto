@@ -5,7 +5,6 @@ package Ydb.PersQueue.V1;
 option java_package = "com.yandex.ydb.persqueue.v1";
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_PersQueue_V1";
-
 import "protos/ydb_persqueue_cluster_discovery.proto";
 import "protos/ydb_persqueue_v1.proto";
 
@@ -34,6 +33,7 @@ service PersQueueService {
      */
 
     rpc StreamingWrite(stream StreamingWriteClientMessage) returns (stream StreamingWriteServerMessage);
+
 
     // Get information about reading
     rpc GetReadSessionsInfo(ReadInfoRequest) returns (ReadInfoResponse);
@@ -75,4 +75,3 @@ service ClusterDiscoveryService {
     // Get PQ clusters which are eligible for the specified Write or Read Sessions
     rpc DiscoverClusters(Ydb.PersQueue.ClusterDiscovery.DiscoverClustersRequest) returns (Ydb.PersQueue.ClusterDiscovery.DiscoverClustersResponse);
 }
-

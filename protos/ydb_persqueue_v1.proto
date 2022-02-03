@@ -3,12 +3,11 @@ import "ydb_operation.proto";
 import "ydb_scheme.proto";
 import "ydb_status_codes.proto";
 import "ydb_issue_message.proto";
-import "validation/validation.proto";
+import "annotations/validation.proto";
 
 package Ydb.PersQueue.V1;
 
 option java_package = "com.yandex.ydb.persqueue";
-
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_PersQueue_V1";
 
 option cc_enable_arenas = true;
@@ -22,6 +21,7 @@ enum Codec {
     CODEC_UNSPECIFIED = 0;
     CODEC_RAW = 1;
     CODEC_GZIP = 2;
+    CODEC_LZOP = 3;
     CODEC_ZSTD = 4;
 }
 
@@ -1018,5 +1018,4 @@ message DescribeTopicResult {
     TopicSettings settings = 2;
 
 }
-
 
