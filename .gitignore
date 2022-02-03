@@ -1,6 +1,5 @@
 .DS_Store
-.idea
+
 # Vim temporary files
 *.swp
 *.swo
-ydb_persqueue_v0.proto
