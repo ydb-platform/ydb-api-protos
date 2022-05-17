@@ -7,7 +7,7 @@ import "annotations/validation.proto";
 
 package Ydb.PersQueue.V1;
 
-option java_package = "com.yandex.ydb.persqueue";
+option java_package = "tech.ydb.persqueue";
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_PersQueue_V1";
 
 option cc_enable_arenas = true;

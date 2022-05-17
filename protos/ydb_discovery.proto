@@ -4,7 +4,7 @@ option cc_enable_arenas = true;
 package Ydb.Discovery;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Discovery";
-option java_package = "com.yandex.ydb.discovery";
+option java_package = "tech.ydb.discovery";
 option java_outer_classname = "DiscoveryProtos";
 
 import "ydb_operation.proto";
