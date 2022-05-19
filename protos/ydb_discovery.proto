@@ -7,7 +7,7 @@ option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Discover
 option java_package = "tech.ydb.discovery";
 option java_outer_classname = "DiscoveryProtos";
 
-import "ydb_operation.proto";
+import "protos/ydb_operation.proto";
 
 message ListEndpointsRequest {
     string database = 1;
