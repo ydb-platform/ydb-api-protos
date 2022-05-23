@@ -3,7 +3,7 @@ syntax = "proto3";
 package Ydb.Cms.V1;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Cms_V1";
-option java_package = "com.yandex.ydb.cms.v1";
+option java_package = "tech.ydb.cms.v1";
 
 import "protos/ydb_cms.proto";
 

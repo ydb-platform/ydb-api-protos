@@ -4,15 +4,15 @@ option cc_enable_arenas = true;
 import "google/protobuf/any.proto";
 import "google/protobuf/duration.proto";
 
-import "annotations/validation.proto";
-import "ydb_common.proto";
-import "ydb_issue_message.proto";
-import "ydb_status_codes.proto";
+import "protos/annotations/validation.proto";
+import "protos/ydb_common.proto";
+import "protos/ydb_issue_message.proto";
+import "protos/ydb_status_codes.proto";
 
 package Ydb.Operations;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Operations";
-option java_package = "com.yandex.ydb";
+option java_package = "tech.ydb";
 option java_outer_classname = "OperationProtos";
 
 message OperationParams {

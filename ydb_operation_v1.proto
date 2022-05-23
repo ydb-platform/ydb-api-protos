@@ -3,7 +3,7 @@ syntax = "proto3";
 package Ydb.Operation.V1;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Operation_V1";
-option java_package = "com.yandex.ydb.operation.v1";
+option java_package = "tech.ydb.operation.v1";
 
 import "protos/ydb_operation.proto";
 

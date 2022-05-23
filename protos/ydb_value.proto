@@ -6,7 +6,7 @@ import "google/protobuf/struct.proto";
 package Ydb;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb";
-option java_package = "com.yandex.ydb";
+option java_package = "tech.ydb";
 option java_outer_classname = "ValueProtos";
 
 message DecimalType {

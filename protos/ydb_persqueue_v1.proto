@@ -1,13 +1,13 @@
 syntax = "proto3";
-import "ydb_operation.proto";
-import "ydb_scheme.proto";
-import "ydb_status_codes.proto";
-import "ydb_issue_message.proto";
-import "annotations/validation.proto";
+import "protos/ydb_operation.proto";
+import "protos/ydb_scheme.proto";
+import "protos/ydb_status_codes.proto";
+import "protos/ydb_issue_message.proto";
+import "protos/annotations/validation.proto";
 
 package Ydb.PersQueue.V1;
 
-option java_package = "com.yandex.ydb.persqueue";
+option java_package = "tech.ydb.persqueue";
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_PersQueue_V1";
 
 option cc_enable_arenas = true;

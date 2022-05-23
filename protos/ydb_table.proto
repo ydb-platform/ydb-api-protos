@@ -1,15 +1,15 @@
 syntax = "proto3";
 option cc_enable_arenas = true;
 
-import "annotations/validation.proto";
-import "ydb_common.proto";
-import "ydb_issue_message.proto";
-import "ydb_operation.proto";
-import "ydb_query_stats.proto";
-import "ydb_value.proto";
-import "ydb_scheme.proto";
-import "ydb_status_codes.proto";
-import "ydb_formats.proto";
+import "protos/annotations/validation.proto";
+import "protos/ydb_common.proto";
+import "protos/ydb_issue_message.proto";
+import "protos/ydb_operation.proto";
+import "protos/ydb_query_stats.proto";
+import "protos/ydb_value.proto";
+import "protos/ydb_scheme.proto";
+import "protos/ydb_status_codes.proto";
+import "protos/ydb_formats.proto";
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
@@ -17,7 +17,7 @@ import "google/protobuf/timestamp.proto";
 package Ydb.Table;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Table";
-option java_package = "com.yandex.ydb.table";
+option java_package = "tech.ydb.table";
 
 // Create new session
 message CreateSessionRequest {

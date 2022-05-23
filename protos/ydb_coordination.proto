@@ -4,14 +4,14 @@ option cc_enable_arenas = true;
 package Ydb.Coordination;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Coordination";
-option java_package = "com.yandex.ydb.coordination";
+option java_package = "tech.ydb.coordination";
 option java_outer_classname = "CoordinationProtos";
 option java_multiple_files = true;
 
-import "ydb_operation.proto";
-import "ydb_status_codes.proto";
-import "ydb_issue_message.proto";
-import "ydb_scheme.proto";
+import "protos/ydb_operation.proto";
+import "protos/ydb_status_codes.proto";
+import "protos/ydb_issue_message.proto";
+import "protos/ydb_scheme.proto";
 
 /**
  * Stub for unsupported messages

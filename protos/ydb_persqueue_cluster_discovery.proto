@@ -2,12 +2,12 @@ syntax = "proto3";
 
 import "google/protobuf/empty.proto";
 
-import "ydb_operation.proto";
+import "protos/ydb_operation.proto";
 
 package Ydb.PersQueue.ClusterDiscovery;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_PersQueue_ClusterDiscovery";
-option java_package = "com.yandex.ydb.persqueue.cluster_discovery";
+option java_package = "tech.ydb.persqueue.cluster_discovery";
 option cc_enable_arenas = true;
 
 
