@@ -11,7 +11,7 @@ import "google/protobuf/timestamp.proto";
 package Ydb.Topic;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Topic";
-option java_package = "com.yandex.ydb.topic";
+option java_package = "tech.ydb.topic";
 
 option cc_enable_arenas = true;
 
