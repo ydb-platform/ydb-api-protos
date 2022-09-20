@@ -59,6 +59,7 @@ message Entry {
         COORDINATION_NODE = 7;
         SEQUENCE = 15;
         REPLICATION = 16;
+        TOPIC = 17;
     }
     
     // Name of scheme entry (dir2 of /dir1/dir2)
