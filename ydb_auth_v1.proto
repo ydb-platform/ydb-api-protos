@@ -8,6 +8,6 @@ option java_package = "tech.ydb.auth.v1";
 import "protos/ydb_auth.proto";
 
 service AuthService {
-// Perform login using built-in auth system
-rpc Login(Auth.LoginRequest) returns (Auth.LoginResponse);
+    // Perform login using built-in auth system
+    rpc Login(Auth.LoginRequest) returns (Auth.LoginResponse);
 }
