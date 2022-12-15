@@ -9,16 +9,16 @@ option java_package = "tech.ydb.auth";
 import "protos/ydb_operation.proto";
 
 message LoginRequest {
-  Ydb.Operations.OperationParams operation_params = 1;
-  string user = 2;
-  string password = 3;
+    Ydb.Operations.OperationParams operation_params = 1;
+    string user = 2;
+    string password = 3;
 }
 
 message LoginResponse {
-  // After successfull completion must contain LoginResult.
-  Ydb.Operations.Operation operation = 1;
+    // After successfull completion must contain LoginResult.
+    Ydb.Operations.Operation operation = 1;
 }
 
 message LoginResult {
-  string token = 1;
+    string token = 1;
 }
