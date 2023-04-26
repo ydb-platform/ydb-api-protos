@@ -2,15 +2,14 @@ syntax = "proto3";
 option cc_enable_arenas = true;
 
 package Ydb.Maintenance;
-option java_package = "tech.ydb.maintenance.v1";
+option java_package = "tech.ydb.draft.maintenance.v1";
 option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/protos/Ydb_Maintenance";
 
-import "ydb/public/api/protos/ydb_operation.proto";
-import "ydb/public/api/protos/ydb_status_codes.proto";
+import "protos/ydb_operation.proto";
+import "protos/ydb_status_codes.proto";
 
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
-
 
 // Used to describe the scope of a single action
 message ActionScope {
@@ -35,8 +34,8 @@ message LockAction {
 }
 
 // Will not be implemented in the 1st version
-// Switching to maintenance mode. Maintenance modes 
-// can overlap with each other 
+// Switching to maintenance mode. Maintenance modes
+// can overlap with each other
 message SetMaintenanceModeAction {
     ActionScope action_scope = 1;
     bool drain_tablets = 2;
@@ -54,7 +53,7 @@ message Action {
 message ActionUid {
     string task_uid = 1;
     // Unique id within a single task. Defined by cms
-    uint32 group_id = 2; 
+    uint32 group_id = 2;
     uint32 action_id = 3;
 }
 
@@ -66,7 +65,7 @@ message ActionState {
         ACTION_STATUS_PENDING = 3;
         // Action has granded permission.
         ACTION_STATUS_PERMIT_GRANDED = 4;
-        // Permission withdrawn due to deadline        
+        // Permission withdrawn due to deadline
         ACTION_STATUS_TIMEOUT_EXPIRED = 5;
         // The user marked the action as completed
         ACTION_STATUS_FINISHED_BY_USER = 6;
@@ -76,16 +75,17 @@ message ActionState {
     enum ActionReason {
         ACTION_REASON_UNSPECIFIED = 0;
         // Action is ok
-        ACTION_REASON_OK = 1; 
-        // Affected storage group has too many unavailable (locked or down) vdisks.
-        // Can't grant another for this availability mode
+        ACTION_REASON_OK = 1;
+        // Affected storage group has too many unavailable (locked or down)
+        // vdisks. Can't grant another for this availability mode
         ACTION_REASON_TOO_MANY_UNAVAILABLE_VDISKS = 2;
         // Blob storage group is already broken
         ACTION_REASON_STORAGE_GROUP_BROKEN = 3;
         // Too many unavailable state storage rings,
         // it is impossible to grant node from another ring
         ACTION_REASON_TOO_MANY_UNAVAILABLE_STATE_STORAGE_RINGS = 4;
-        // State storage broken. Too many (more than (nToSelect - 1) / 2) unavailable rings 
+        // State storage broken. Too many (more than (nToSelect - 1) / 2)
+        // unavailable rings
         ACTION_REASON_STATE_STORAGE_BROKEN = 5;
         // Issue in cluster disabled nodes limit
         ACTION_REASON_DISABLED_NODES_LIMIT_RICHED = 6;
@@ -131,7 +131,7 @@ enum AvailabilityMode {
     // In this mode CMS allows (nToSelect - 1) / 2 state storage rings
     AVAILABILITY_MODE_WEAK = 2;
     // In this mode CMS allows to lock 1 disk in a group, but if it can't
-    // it waits for 15 minutes at gives 1 more node. 
+    // it waits for 15 minutes at gives 1 more node.
     AVAILABILITY_MODE_SMART = 3;
     // In this mode CMS allows at most 1 locked disk in a group
     // ignoring its parity parts count. Allows to restart nodes
@@ -166,7 +166,7 @@ message ListClusterNodesResponse {
         string fqdn = 4;
         uint32 interconnect_port = 5;
         ItemState state = 6;
-        optional string tenant = 7;
+        string tenant = 7;
         bool is_storage = 8;
         bool is_dynamic = 9;
     }
@@ -192,11 +192,11 @@ message ListNodesDevicesResponse {
     repeated NodeDevices nodes_devices = 1;
 }
 
-message MaintenanceTaskOptions { 
+message MaintenanceTaskOptions {
     // The maximum number of action groups in progress at a time
     uint32 in_flight = 1;
     bool dry_run = 2;
-    // Name of a task and some comment. 
+    // Name of a task and some comment.
     // Provided for the convenience of the user.
     string name = 3;
     string comment = 4;
@@ -204,19 +204,18 @@ message MaintenanceTaskOptions {
     AvailabilityMode availability_mode = 5;
     // User defined GUID
     string task_uid = 6;
-    // Task with largest priority blocks other tasks 
-    // until all actions are completed. Default is 0 
+    // Task with largest priority blocks other tasks
+    // until all actions are completed. Default is 0
     int64 priority = 7;
 }
 
 message CreateMaintenanceTaskRequest {
     MaintenanceTaskOptions task_options = 1;
-    repeated ActionGroup action_groups = 2; 
+    repeated ActionGroup action_groups = 2;
     // Indicates that client is no longer interested in the task after
     // the specified duration starting from the time task arrives at the cms.
     // If not specified then default duration from CMS config is used.
     google.protobuf.Duration task_timeout = 5;
-
 }
 
 // Updated action states and tryes to grand permissions
@@ -228,15 +227,15 @@ message MaintenanceTaskResponse {
     StatusIds.StatusCode status = 1;
     string task_uid = 2;
     repeated ActionGroupStates actions_states = 3;
-    // Try again after this deadline. Specified if there are no PERMISSION_GRANDED 
-    // actions after request
-    optional google.protobuf.Timestamp deadline = 4;
+    // Try again after this deadline. Specified if there are no
+    // PERMISSION_GRANDED actions after request
+    google.protobuf.Timestamp deadline = 4;
 }
 
 message ListMaintenanceTasksRequest {
-    // If specified, it will return the tasks created by this user. 
+    // If specified, it will return the tasks created by this user.
     // Otherwise all tasks will be returned
-    optional string user = 1;
+    string user = 1;
 }
 
 message ListMaintenanceTasksResponse {
@@ -244,8 +243,8 @@ message ListMaintenanceTasksResponse {
 }
 
 // Returns specified task
-message GetMaintenanceTaskRequest { 
-    string task_uid = 1; 
+message GetMaintenanceTaskRequest {
+    string task_uid = 1;
 }
 
 message GetMaintenanceTaskResponse {

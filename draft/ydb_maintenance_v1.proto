@@ -1,10 +1,10 @@
 syntax = "proto3";
 
 package Ydb.Maintenance.V1;
-option java_package = "com.yandex.ydb.maintenance.service.v1";
+option java_package = "tech.ydb.draft.maintenance";
 option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/Ydb_Maintenance_V1";
 
-import "protos/draft/ydb_maintenance.proto";
+import "draft/protos/ydb_maintenance.proto";
 
 service MaintenanceService {
     // List cluster hosts
