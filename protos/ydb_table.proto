@@ -154,13 +154,26 @@ message Changefeed {
     google.protobuf.Duration retention_period = 4;
     // Emit virtual timestamps of changes along with data or not
     bool virtual_timestamps = 5;
+    // Initial scan will output the current state of the table first
+    bool initial_scan = 6;
+    // Attributes. Total size is limited to 10 KB.
+    map<string, string> attributes = 7 [(map_key).length.range = {min: 1, max: 100}, (length).range = {min: 1, max: 4096}];
 }
 
 message ChangefeedDescription {
     enum State {
         STATE_UNSPECIFIED = 0;
+
+        // Normal state, from this state changefeed can be disabled
         STATE_ENABLED = 1;
+
+        // No new change records are generated, but the old ones remain available
+        // From this state changefeed cannot be switched to any other state
         STATE_DISABLED = 2;
+
+        // An initial scan is being performed.
+        // After its completion changefeed will switch to the normal state
+        STATE_INITIAL_SCAN = 3;
     }
 
     // Name of the feed
@@ -173,6 +186,8 @@ message ChangefeedDescription {
     State state = 4;
     // State of emitting of virtual timestamps along with data
     bool virtual_timestamps = 5;
+    // Attributes
+    map<string, string> attributes = 6;
 }
 
 message StoragePool {
@@ -489,6 +504,8 @@ message CreateTableRequest {
     Ydb.FeatureFlag.Status key_bloom_filter = 16;
     // Read replicas settings for table
     ReadReplicasSettings read_replicas_settings = 17;
+    // Tiering rules name. It specifies how data migrates from one tier (logical storage) to another.
+    string tiering = 18;
 }
 
 message CreateTableResponse {
@@ -563,6 +580,11 @@ message AlterTableRequest {
     repeated string drop_changefeeds = 20;
     // Rename existed index
     repeated RenameIndexItem rename_indexes = 21;
+    // Setup or remove tiering
+    oneof tiering_action {
+        string set_tiering = 22;
+        google.protobuf.Empty drop_tiering = 23;
+    }
 }
 
 message AlterTableResponse {
@@ -679,6 +701,8 @@ message DescribeTableResult {
     ReadReplicasSettings read_replicas_settings = 14;
     // List of changefeeds
     repeated ChangefeedDescription changefeeds = 15;
+    // Tiering rules name
+    string tiering = 16;
 }
 
 message Query {
