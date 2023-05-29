@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package Ydb.FederationDiscovery.V1;
+
+option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_FederationDiscovery_V1";
+option java_package = "tech.ydb.federation.discovery.v1";
+
+import "protos/ydb_federation_discovery.proto";
+
+service FederationDiscoveryService {
+    // Get list of databases.
+    rpc ListFederationDatabases(Ydb.FederationDiscovery.ListFederationDatabasesRequest)
+        returns (Ydb.FederationDiscovery.ListFederationDatabasesResponse);
+}
