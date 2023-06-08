@@ -4,7 +4,7 @@ option cc_enable_arenas = true;
 package Ydb.TableStats;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_TableStats";
-option java_package = "tech.ydb";
+option java_package = "tech.ydb.proto";
 
 // Describes select, update (insert, upsert, replace) and delete operations
 message OperationStats {

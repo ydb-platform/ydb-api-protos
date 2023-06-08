@@ -2,7 +2,7 @@ syntax = "proto3";
 option cc_enable_arenas = true;
 
 package Ydb.Maintenance;
-option java_package = "tech.ydb.draft.maintenance.v1";
+option java_package = "tech.ydb.proto.draft.maintenance.v1";
 option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/protos/Ydb_Maintenance";
 
 import "protos/ydb_status_codes.proto";

@@ -4,7 +4,7 @@ option cc_enable_arenas = true;
 package Ydb.Topic.V1;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Topic_V1";
-option java_package = "tech.ydb.topic.v1";
+option java_package = "tech.ydb.proto.topic.v1";
 
 import "protos/ydb_topic.proto";
 
