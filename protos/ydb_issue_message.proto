@@ -4,7 +4,7 @@ option cc_enable_arenas = true;
 package Ydb.Issue;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Issue";
-option java_package = "tech.ydb";
+option java_package = "tech.ydb.proto";
 
 // IssueMessage is a transport format for ydb/library/yql/public/issue library
 message IssueMessage {

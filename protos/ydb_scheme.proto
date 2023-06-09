@@ -4,7 +4,7 @@ option cc_enable_arenas = true;
 package Ydb.Scheme;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Scheme";
-option java_package = "tech.ydb.scheme";
+option java_package = "tech.ydb.proto.scheme";
 option java_outer_classname = "SchemeOperationProtos";
 
 import "protos/ydb_common.proto";

@@ -3,7 +3,7 @@ syntax = "proto3";
 package Ydb.Monitoring.V1;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Monitoring_V1";
-option java_package = "tech.ydb.monitoring.v1";
+option java_package = "tech.ydb.proto.monitoring.v1";
 
 import "protos/ydb_monitoring.proto";
 
