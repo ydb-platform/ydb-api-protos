@@ -1,11 +1,16 @@
 syntax = "proto3";
 
 package Ydb.Query.V1;
-option java_package = "tech.ydb.proto.draft.query.v1";
-option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/Ydb_Query_V1";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Query_V1";
+option java_package = "tech.ydb.proto.query.v1";
 
-import "draft/protos/ydb_query.proto";
 import "protos/ydb_operation.proto";
+import "protos/ydb_query.proto";
+
+// ! WARNING: Experimental API
+// ! This API is currently in experimental state and is a subject for changes.
+// ! No backward and/or forward compatibility guarantees are provided.
+// ! DO NOT USE for production workloads.
 
 service QueryService {
     // Sessions are basic primitives for communicating with YDB Query Service. The are similar to
@@ -15,7 +20,7 @@ service QueryService {
     // 3. Store state for volatile stateful operations, such as short-living transactions.
     rpc CreateSession(Query.CreateSessionRequest) returns (Query.CreateSessionResponse);
     rpc DeleteSession(Query.DeleteSessionRequest) returns (Query.DeleteSessionResponse);
-    rpc PingSession(Query.PingSessionRequest) returns (Query.PingSessionResponse);
+    rpc AttachSession(Query.AttachSessionRequest) returns (stream Query.SessionState);
 
     // Short-living transactions allow transactional execution of several queries, including support
     // for interactive transactions. Transaction control can be implemented via flags in ExecuteQuery
@@ -50,13 +55,4 @@ service QueryService {
     // For persistent scripts, you can fetch results in specific position of specific result set using
     // position instead of fetch_token.
     rpc FetchScriptResults(Query.FetchScriptResultsRequest) returns (Query.FetchScriptResultsResponse);
-
-    // Persistently save script content in DB.
-    rpc SaveScript(Query.SaveScriptRequest) returns (Query.SaveScriptResponse);
-
-    // List saved scripts in DB.
-    rpc ListScripts(Query.ListScriptsRequest) returns (Query.ListScriptsResponse);
-
-    // Delete saved script by id.
-    rpc DeleteScript(Query.DeleteScriptRequest) returns (Query.DeleteScriptResponse);
 }
