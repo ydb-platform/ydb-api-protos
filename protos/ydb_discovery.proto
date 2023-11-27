@@ -76,13 +76,3 @@ message NodeLocation {
     optional string rack = 30;
     optional string unit = 40;
 }
-
-message NodeInfo {
-    optional uint32 node_id = 1;
-    optional string host = 2;
-    optional uint32 port = 3;
-    optional string resolve_host = 4;
-    optional string address = 5;
-    optional NodeLocation location = 6;
-    optional uint64 expire = 7;
-}
