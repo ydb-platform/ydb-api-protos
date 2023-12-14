@@ -51,6 +51,10 @@ message UpdateTokenRequest {
 message UpdateTokenResponse {
 }
 
+message MetadataItem {
+    string key = 1;
+    bytes value = 2;
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // StreamWrite
@@ -151,6 +155,8 @@ message StreamWriteMessage {
                 // Explicit partition id to write to.
                 int64 partition_id = 6;
             }
+            // Message metadata. Overall size is limited to 4096 symbols (all keys and values combined).
+            repeated MetadataItem metadata_items = 7 [(Ydb.size).le = 1000];
         }
     }
 
@@ -358,6 +364,7 @@ message StreamReadMessage {
 
             // Filled if message_group_id was set on message write.
             string message_group_id = 7;
+            repeated MetadataItem metadata_items = 8;
         }
 
         // Representation of sequence of client messages from one write session.
