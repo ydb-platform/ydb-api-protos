@@ -5,7 +5,7 @@ package Ydb.DynamicConfig.V1;
 
 option java_package = "com.yandex.ydb.dynamic_config.v1";
 
-import "ydb/public/api/protos/draft/ydb_dynamic_config.proto";
+import "draft/protos/ydb_dynamic_config.proto";
 
 // Dynamic Config is the configuration applied to dynamic nodes without static configuration
 // and is utilized by certain services, such as logging, which can update their settings
