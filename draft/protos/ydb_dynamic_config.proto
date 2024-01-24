@@ -3,6 +3,7 @@ option cc_enable_arenas = true;
 
 package Ydb.DynamicConfig;
 option java_package = "com.yandex.ydb.dynamic_console";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/protos/Ydb_DynamicConfig";
 
 import "protos/ydb_operation.proto";
 
