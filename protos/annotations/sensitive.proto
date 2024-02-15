@@ -2,7 +2,7 @@ syntax = "proto3";
 option cc_enable_arenas = true;
 
 package Ydb;
-option java_package = "com.yandex.ydb";
+option java_package = "tech.ydb.proto";
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb";
 
 import "google/protobuf/descriptor.proto";
