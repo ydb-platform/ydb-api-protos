@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package Ydb.S3Internal.V1;
+option java_package = "tech.ydb.proto.draft.s3_internal";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/Ydb_S3Internal_V1";
+
+import "draft/protos/ydb_s3_internal.proto";
+
+service S3InternalService {
+  rpc S3Listing(S3Internal.S3ListingRequest) returns (S3Internal.S3ListingResponse);
+}
