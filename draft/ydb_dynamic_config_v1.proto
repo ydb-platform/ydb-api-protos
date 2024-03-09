@@ -4,7 +4,7 @@ option cc_enable_arenas = true;
 package Ydb.DynamicConfig.V1;
 
 option java_package = "tech.ydb.proto.draft.dynamicconfig.v1";
-option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/Ydb_DynamicConfig_V1";
+option go_package = "github.com/sourcecd/ydb-go-genproto/draft/Ydb_DynamicConfig_V1";
 
 import "draft/protos/ydb_dynamic_config.proto";
 

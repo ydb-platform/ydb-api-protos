@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package Ydb.Query.V1;
-option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Query_V1";
+option go_package = "github.com/sourcecd/ydb-go-genproto/Ydb_Query_V1";
 option java_package = "tech.ydb.proto.query.v1";
 
 import "protos/ydb_operation.proto";

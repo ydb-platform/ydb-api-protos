@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Ydb.Export.V1;
 
-option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Export_V1";
+option go_package = "github.com/sourcecd/ydb-go-genproto/Ydb_Export_V1";
 option java_package = "tech.ydb.proto.export.v1";
 
 import "protos/ydb_export.proto";

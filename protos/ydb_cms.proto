@@ -3,7 +3,7 @@ option cc_enable_arenas = true;
 
 package Ydb.Cms;
 
-option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Cms";
+option go_package = "github.com/sourcecd/ydb-go-genproto/protos/Ydb_Cms";
 option java_package = "tech.ydb.proto.cms";
 
 import "protos/ydb_operation.proto";

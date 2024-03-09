@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Ydb.Discovery.V1;
 
-option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Discovery_V1";
+option go_package = "github.com/sourcecd/ydb-go-genproto/Ydb_Discovery_V1";
 option java_package = "tech.ydb.proto.discovery.v1";
 
 import "protos/ydb_discovery.proto";

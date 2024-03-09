@@ -3,7 +3,7 @@ option cc_enable_arenas = true;
 
 package Ydb.Auth;
 
-option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Auth";
+option go_package = "github.com/sourcecd/ydb-go-genproto/protos/Ydb_Auth";
 option java_package = "tech.ydb.proto.auth";
 
 import "protos/ydb_operation.proto";

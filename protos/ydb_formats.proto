@@ -3,7 +3,7 @@ option cc_enable_arenas = true;
 
 package Ydb.Formats;
 
-option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Formats";
+option go_package = "github.com/sourcecd/ydb-go-genproto/protos/Ydb_Formats";
 option java_package = "tech.ydb.proto.formats";
 
 message ArrowBatchSettings {

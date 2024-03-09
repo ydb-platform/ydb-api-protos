@@ -4,7 +4,7 @@ option cc_enable_arenas = true;
 package Ydb.Query;
 
 option java_package = "tech.ydb.proto.query";
-option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Query";
+option go_package = "github.com/sourcecd/ydb-go-genproto/protos/Ydb_Query";
 
 import "google/protobuf/duration.proto";
 

@@ -3,7 +3,7 @@ option cc_enable_arenas = true;
 
 package Ydb.Maintenance;
 option java_package = "tech.ydb.proto.draft.maintenance.v1";
-option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/protos/Ydb_Maintenance";
+option go_package = "github.com/sourcecd/ydb-go-genproto/draft/protos/Ydb_Maintenance";
 
 import "protos/annotations/validation.proto";
 import "protos/ydb_status_codes.proto";

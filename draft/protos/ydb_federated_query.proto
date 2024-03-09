@@ -3,7 +3,7 @@ option cc_enable_arenas = true;
 
 package FederatedQuery;
 option java_package = "tech.ydb.proto.draft.federated.query";
-option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/protos/Ydb_FederatedQuery";
+option go_package = "github.com/sourcecd/ydb-go-genproto/draft/protos/Ydb_FederatedQuery";
 
 import "protos/annotations/sensitive.proto";
 import "protos/annotations/validation.proto";

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Ydb.Coordination.V1;
 
-option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Coordination_V1";
+option go_package = "github.com/sourcecd/ydb-go-genproto/Ydb_Coordination_V1";
 option java_package = "tech.ydb.proto.coordination.v1";
 option java_outer_classname = "CoordinationGrpc";
 option java_multiple_files = true;
