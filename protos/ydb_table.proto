@@ -17,7 +17,7 @@ import "google/protobuf/timestamp.proto";
 
 package Ydb.Table;
 
-option go_package = "github.com/sourcecd/ydb-go-genproto/protos/Ydb_Table";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Table";
 option java_package = "tech.ydb.proto.table";
 
 // Create new session

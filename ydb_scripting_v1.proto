@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Ydb.Scripting.V1;
 
-option go_package = "github.com/sourcecd/ydb-go-genproto/Ydb_Scripting_V1";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Scripting_V1";
 option java_package = "tech.ydb.proto.scripting.v1";
 
 import "protos/ydb_scripting.proto";

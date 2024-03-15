@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Ydb.Table.V1;
 
-option go_package = "github.com/sourcecd/ydb-go-genproto/Ydb_Table_V1";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Table_V1";
 option java_package = "tech.ydb.proto.table.v1";
 
 import "protos/ydb_table.proto";

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package Ydb;
 
-option go_package = "github.com/sourcecd/ydb-go-genproto/protos/Ydb";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb";
 option java_package = "tech.ydb.proto";
 option java_outer_classname = "StatusCodesProtos";
 

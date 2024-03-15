@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";
 
 package Ydb.Export;
 
-option go_package = "github.com/sourcecd/ydb-go-genproto/protos/Ydb_Export";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Export";
 option java_package = "tech.ydb.proto.export";
 
 /// Common

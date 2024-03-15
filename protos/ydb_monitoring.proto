@@ -3,7 +3,7 @@ option cc_enable_arenas = true;
 
 package Ydb.Monitoring;
 
-option go_package = "github.com/sourcecd/ydb-go-genproto/protos/Ydb_Monitoring";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Monitoring";
 option java_package = "tech.ydb.proto.monitoring";
 option java_outer_classname = "MonitoringProtos";
 
