@@ -9,11 +9,6 @@ import "protos/ydb_issue_message.proto";
 import "protos/ydb_value.proto";
 import "protos/ydb_status_codes.proto";
 
-message ListingFilter {
-  repeated string columns = 1;
-  TypedValue values = 2;
-}
-
 message ListingRequest {
   enum EMatchType {
     EQUAL = 0;
@@ -27,7 +22,7 @@ message ListingRequest {
   TypedValue start_after_key_suffix = 6; // A tuple representing key columns that succeed path column
   int32 max_keys = 7;
   repeated string columns_to_return = 8;
-  ListingFilter filter = 9;
+  reserved 9; // Deprecated filter
   TypedValue matching_filter = 10;
 }
 
@@ -38,9 +33,4 @@ message ListingResponse {
   Ydb.ResultSet contents = 4;           // Every Contents row starts with key suffix with KeySuffixSize columns
   bool is_truncated = 5;
   bytes next_continuation_token = 6;
-}
-
-message ContinuationToken {
-  string last_path = 1;
-  bool is_folder = 2;
 }
