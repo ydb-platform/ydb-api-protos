@@ -2,7 +2,7 @@ syntax = "proto3";
 option cc_enable_arenas = true;
 
 package Ydb.ObjectStorage;
-option java_package = "com.yandex.ydb.object_storage";
+option java_package = "tech.ydb.proto.draft.object_storage";
 option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/protos/Ydb_ObjectStorage";
 
 import "protos/ydb_issue_message.proto";
