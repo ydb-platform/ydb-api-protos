@@ -63,6 +63,9 @@ message Entry {
         SEQUENCE = 15;
         REPLICATION = 16;
         TOPIC = 17;
+        EXTERNAL_TABLE = 18;
+        EXTERNAL_DATA_SOURCE = 19;
+        VIEW = 20;
     }
 
     // Name of scheme entry (dir2 of /dir1/dir2)
