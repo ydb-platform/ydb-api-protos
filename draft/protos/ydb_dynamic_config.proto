@@ -223,4 +223,3 @@ message ResolveAllConfigResult {
     // Verbose resolved configs
     repeated ResolvedConfig configs = 2;
 }
-
