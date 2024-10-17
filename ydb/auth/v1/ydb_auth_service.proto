@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package ydb.auth.v1;
+
+import "ydb/auth/v1/ydb_auth.proto";
+
+option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Auth_V1";
+option java_package = "tech.ydb.proto.auth.v1";
+
+service AuthService {
+  // Perform login using built-in auth system
+  rpc Login(LoginRequest) returns (LoginResponse);
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package ydb.auth.v1;
+
+import "protos/ydb_operation.proto";
+
+option cc_enable_arenas = true;
+option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Auth_V1";
+option java_package = "tech.ydb.proto.auth.v1";
+
+message LoginRequest {
+  Ydb.Operations.OperationParams operation_params = 1;
+  string user = 2;
+  string password = 3;
+}
+
+message LoginResponse {
+  // After successfull completion must contain LoginResult.
+  Ydb.Operations.Operation operation = 1;
+}
+
+message LoginResult {
+  string token = 1;
+}
