@@ -8,7 +8,6 @@ option java_package = "tech.ydb.proto.table.v1";
 import "protos/ydb_table.proto";
 
 service TableService {
-
     // Create new session. Implicit session creation is forbidden,
     // so user must create new session before execute any query,
     // otherwise BAD_SESSION status will be returned.

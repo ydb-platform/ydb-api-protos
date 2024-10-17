@@ -8,7 +8,6 @@ option java_package = "tech.ydb.proto.export.v1";
 import "protos/ydb_export.proto";
 
 service ExportService {
-
     // Exports data to YT.
     // Method starts an asynchronous operation that can be cancelled while it is in progress.
     rpc ExportToYt(Export.ExportToYtRequest) returns (Export.ExportToYtResponse);
