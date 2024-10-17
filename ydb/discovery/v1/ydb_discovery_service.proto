@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package ydb.discovery.v1;
+
+import "ydb/discovery/v1/ydb_discovery.proto";
+
+option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Discovery_V1";
+option java_package = "tech.ydb.proto.discovery.v1";
+
+service DiscoveryService {
+  rpc ListEndpoints(ListEndpointsRequest) returns (ListEndpointsResponse);
+  rpc WhoAmI(WhoAmIRequest) returns (WhoAmIResponse);
+  rpc NodeRegistration(NodeRegistrationRequest) returns (NodeRegistrationResponse);
+}
