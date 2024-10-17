@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package ydb.discovery.v1;
+package Ydb.Discovery.V1;
 
-import "ydb/discovery/v1/ydb_discovery.proto";
+import "Ydb/Discovery/V1/resources.proto";
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Discovery_V1";
 option java_package = "tech.ydb.proto.discovery.v1";

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ydb.auth.v1;
+package Ydb.Auth.V1;
 
 import "protos/ydb_operation.proto";
 
