@@ -13,7 +13,7 @@ import "protos/ydb_query.proto";
 // ! DO NOT USE for production workloads.
 
 service QueryService {
-    // Sessions are basic primitives for communicating with YDB Query Service. The are similar to
+    // Sessions are basic primitives for communicating with YDB Query Service. They are similar to
     // connections for classic relational DBs. Sessions serve three main purposes:
     // 1. Provide a flow control for DB requests with limited number of active channels.
     // 2. Distribute load evenly across multiple DB nodes.

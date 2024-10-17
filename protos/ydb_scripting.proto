@@ -21,6 +21,7 @@ message ExecuteYqlRequest {
     string script = 2;
     map<string, TypedValue> parameters = 3;
     Ydb.Table.QueryStatsCollection.Mode collect_stats = 4;
+    Ydb.Query.Syntax syntax = 5;
 }
 
 message ExecuteYqlResponse {

@@ -29,6 +29,8 @@ message SelfCheckRequest {
     bool return_verbose_status = 2; // return detailed info about components checked with their statuses
     StatusFlag.Status minimum_status = 3; // minimum status of issues to return
     uint32 maximum_level = 4; // maximum level of issues to return
+    bool do_not_cache = 5; // by default database health state is taken from metadata cache; this option can be used to force bypassing that cache
+    bool merge_records = 6; // combine similar records with similar status, message and level into one issue
 }
 
 message SelfCheckResponse {
@@ -118,6 +120,8 @@ message ComputeStatus {
     StatusFlag.Status overall = 1;
     repeated ComputeNodeStatus nodes = 2;
     repeated ComputeTabletStatus tablets = 3;
+    float paths_quota_usage = 4;
+    float shards_quota_usage = 5;
 }
 
 message LocationNode {
@@ -175,6 +179,8 @@ message Location {
     LocationStorage storage = 1;
     LocationCompute compute = 2;
     LocationDatabase database = 3;
+    LocationNode node = 4;
+    LocationNode peer = 5;
 }
 
 message IssueLog {
@@ -200,4 +206,5 @@ message SelfCheckResult {
     SelfCheck.Result self_check_result = 1;
     repeated IssueLog issue_log = 2;
     repeated DatabaseStatus database_status = 3;
+    LocationNode location = 4;
 }
