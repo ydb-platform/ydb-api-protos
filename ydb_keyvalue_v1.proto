@@ -4,8 +4,6 @@ package Ydb.KeyValue.V1;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_KeyValue_V1";
 option java_package = "tech.ydb.proto.keyvalue.v1";
-option java_outer_classname = "KeyValueGrpc";
-option java_multiple_files = true;
 
 import "protos/ydb_keyvalue.proto";
 

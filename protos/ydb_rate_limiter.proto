@@ -5,10 +5,11 @@ package Ydb.RateLimiter;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_RateLimiter";
 option java_package = "tech.ydb.proto.rate_limiter";
-option java_outer_classname = "RateLimiterProtos";
-option java_multiple_files = true;
+
+import "google/protobuf/struct.proto";
 
 import "protos/ydb_operation.proto";
+import "protos/ydb_value.proto";
 
 //
 // Rate Limiter control API.
@@ -80,7 +81,7 @@ message MeteringConfig {
 message ReplicatedBucketSettings {
     // Interval between syncs from kesus and between consumption reports in Ms
     // Default value equals 5000 ms and not inherited
-    optional uint64 report_interval_ms = 1 [(Ydb.value) = "> 0"];
+    optional uint64 report_interval_ms = 1;
 }
 
 // Settings for hierarchical deficit round robin (HDRR) algorithm.
@@ -115,7 +116,7 @@ message HierarchicalDrrSettings {
     // this limit the final amount in bucket will be equal to this limit
     // Should be negative value
     // Unset means no limit
-    optional double immediately_fill_up_to = 5 [(Ydb.value) = "< 0"];
+    optional double immediately_fill_up_to = 5;
 
     // NOTE: This API is experimental
     // Behavior of leafs in tree

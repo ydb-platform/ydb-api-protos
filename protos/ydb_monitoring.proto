@@ -5,7 +5,6 @@ package Ydb.Monitoring;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Monitoring";
 option java_package = "tech.ydb.proto.monitoring";
-option java_outer_classname = "MonitoringProtos";
 
 import "protos/ydb_operation.proto";
 

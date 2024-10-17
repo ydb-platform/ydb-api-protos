@@ -5,15 +5,8 @@ package Ydb.KeyValue;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_KeyValue";
 option java_package = "tech.ydb.proto";
-option java_outer_classname = "KeyValueProtos";
-option java_multiple_files = true;
 
 import "protos/ydb_operation.proto";
-
-//
-// KeyValue API.
-//
-
 
 message StorageChannelInfo {
     enum StatusFlag {

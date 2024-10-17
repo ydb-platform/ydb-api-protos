@@ -1,20 +1,20 @@
 syntax = "proto3";
-import "protos/ydb_operation.proto";
-import "protos/ydb_scheme.proto";
-import "protos/ydb_status_codes.proto";
-import "protos/ydb_issue_message.proto";
-import "protos/annotations/sensitive.proto";
-import "protos/annotations/validation.proto";
-
-import "google/protobuf/duration.proto";
-import "google/protobuf/timestamp.proto";
+option cc_enable_arenas = true;
 
 package Ydb.Topic;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Topic";
 option java_package = "tech.ydb.proto.topic";
 
-option cc_enable_arenas = true;
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+
+import "protos/annotations/sensitive.proto";
+import "protos/annotations/validation.proto";
+import "protos/ydb_operation.proto";
+import "protos/ydb_scheme.proto";
+import "protos/ydb_status_codes.proto";
+import "protos/ydb_issue_message.proto";
 
 enum Codec {
     CODEC_UNSPECIFIED = 0;

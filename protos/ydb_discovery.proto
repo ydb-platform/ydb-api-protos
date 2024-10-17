@@ -5,7 +5,6 @@ package Ydb.Discovery;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Discovery";
 option java_package = "tech.ydb.proto.discovery";
-option java_outer_classname = "DiscoveryProtos";
 
 import "protos/ydb_operation.proto";
 

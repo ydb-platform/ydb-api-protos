@@ -4,8 +4,6 @@ package Ydb.RateLimiter.V1;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_RateLimiter_V1";
 option java_package = "tech.ydb.proto.rate_limiter.v1";
-option java_outer_classname = "RateLimiterGrpc";
-option java_multiple_files = true;
 
 import "protos/ydb_rate_limiter.proto";
 

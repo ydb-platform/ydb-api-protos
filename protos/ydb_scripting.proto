@@ -5,13 +5,11 @@ package Ydb.Scripting;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Scripting";
 option java_package = "tech.ydb.proto.scripting";
-option java_outer_classname = "ScriptingProtos";
 
 import "protos/ydb_operation.proto";
 import "protos/ydb_value.proto";
-
-// TODO: Refactor to ydb_query usage.
 import "protos/ydb_table.proto";
+import "protos/ydb_query.proto";
 import "protos/ydb_query_stats.proto";
 import "protos/ydb_issue_message.proto";
 import "protos/ydb_status_codes.proto";

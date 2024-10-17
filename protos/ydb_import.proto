@@ -1,15 +1,15 @@
 syntax = "proto3";
 option cc_enable_arenas = true;
 
-import "protos/annotations/validation.proto";
-import "protos/ydb_operation.proto";
-
-import "google/protobuf/timestamp.proto";
-
 package Ydb.Import;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_Import";
 option java_package = "tech.ydb.proto.import_";
+
+import "google/protobuf/timestamp.proto";
+
+import "protos/annotations/validation.proto";
+import "protos/ydb_operation.proto";
 
 /// Common
 message ImportProgress {

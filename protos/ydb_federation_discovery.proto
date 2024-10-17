@@ -5,7 +5,6 @@ package Ydb.FederationDiscovery;
 
 option go_package = "github.com/ydb-platform/ydb-go-genproto/protos/Ydb_FederationDiscovery";
 option java_package = "tech.ydb.proto.federation.discovery";
-option java_outer_classname = "FederationDiscoveryProtos";
 
 import "protos/ydb_operation.proto";
 
