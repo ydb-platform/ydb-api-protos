@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package Ydb.Scripting.V1;
+
+import "Ydb/Scripting/V1/resources.proto";
+
+option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_Scripting_V1";
+option java_package = "tech.ydb.proto.scripting.v1";
+
+service ScriptingService {
+  rpc ExecuteYql(ExecuteYqlRequest) returns (ExecuteYqlResponse);
+
+  // Executes yql request with streaming result.
+  rpc StreamExecuteYql(ExecuteYqlRequest) returns (stream ExecuteYqlPartialResponse);
+
+  rpc ExplainYql(ExplainYqlRequest) returns (ExplainYqlResponse);
+}
