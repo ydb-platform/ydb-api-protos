@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package Ydb.KeyValue.V1;
 
-option java_package = "tech.ydb.proto.draft.keyvalue";
-option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/Ydb_KeyValue_V1";
+option java_package = "tech.ydb.proto.keyvalue";
+option go_package = "github.com/ydb-platform/ydb-go-genproto/Ydb_KeyValue_V1";
 
-import "draft/protos/ydb_keyvalue.proto";
+import "protos/ydb_keyvalue.proto";
 
 // KeyValue tablets provide a simple key-value storage in a low-overhead and easy-to-shoot-your-leg manner.
 // To use KeyValue tablets in an efficient way one must be familiar with the design of both the KeyValue tablet

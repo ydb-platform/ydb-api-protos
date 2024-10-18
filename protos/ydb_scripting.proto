@@ -9,6 +9,7 @@ option java_outer_classname = "ScriptingProtos";
 
 import "protos/ydb_operation.proto";
 import "protos/ydb_value.proto";
+import "protos/ydb_query.proto";
 
 // TODO: Refactor to ydb_query usage.
 import "protos/ydb_table.proto";
@@ -21,6 +22,7 @@ message ExecuteYqlRequest {
     string script = 2;
     map<string, TypedValue> parameters = 3;
     Ydb.Table.QueryStatsCollection.Mode collect_stats = 4;
+    Ydb.Query.Syntax syntax = 5;
 }
 
 message ExecuteYqlResponse {

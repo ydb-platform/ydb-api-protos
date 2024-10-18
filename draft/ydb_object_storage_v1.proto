@@ -7,5 +7,5 @@ option go_package = "github.com/ydb-platform/ydb-go-genproto/draft/Ydb_ObjectSto
 import "draft/protos/ydb_object_storage.proto";
 
 service ObjectStorageService {
-  rpc List(ObjectStorage.ListingRequest) returns (ObjectStorage.ListingResponse);
+    rpc List(ObjectStorage.ListingRequest) returns (ObjectStorage.ListingResponse);
 }
