@@ -719,7 +719,7 @@ message DescribeTableRequest {
     // Includes partition statistics (required include_table_statistics)
     bool include_partition_stats = 7;
     // Includes shard -> node id maping (required include_partition_stats)
-    bool include_shard_nodes_info = 9
+    bool include_shard_nodes_info = 9;
 }
 
 message DescribeTableResponse {
