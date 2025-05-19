@@ -13,7 +13,6 @@ import "protos/ydb_operation.proto";
 import "protos/ydb_value.proto";
 import "protos/ydb_issue_message.proto";
 
-
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
