@@ -3,7 +3,7 @@ option cc_enable_arenas = true;
 
 import "google/protobuf/struct.proto";
 
-import "ydb/public/api/protos/ydb_formats.proto";
+import "protos/ydb_formats.proto";
 
 package Ydb;
 
