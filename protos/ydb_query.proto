@@ -173,6 +173,10 @@ message ExecuteQueryRequest {
     int64 response_part_limit_bytes = 9 [(Ydb.value) = "[0; 33554432]"];
 
     string pool_id = 10; // Workload manager pool id
+
+    // Type of query result set parts.
+    // It's for get default ResultSet or some result_data with a different type in response stream.
+    Ydb.ResultSet.Type result_set_type = 11;
 }
 
 message ResultSetMeta {
