@@ -172,11 +172,17 @@ message ExecuteQueryRequest {
     // Allows to set size limitation (in bytes) for one result part
     int64 response_part_limit_bytes = 9 [(Ydb.value) = "[0; 33554432]"];
 
-    string pool_id = 10; // Workload manager pool id
+    // Workload manager pool id
+    string pool_id = 10;
+
+    // Time interval for sending periodical query statistics.
+    // When query statistics are enabled (stats_mode != STATS_MODE_NONE), by default statistics will be sent only once after query execution is finished.
+    // In case when stats_period_ms is specified and is non-zero, query statistics will be additionally sent every stats_period_ms milliseconds beginning from the start of query execution.
+    int64 stats_period_ms = 11 [(Ydb.value) = ">= 0"];
 
     // Type of query result set parts.
     // It's for get default ResultSet or some result_data with a different type in response stream.
-    Ydb.ResultSet.Type result_set_type = 11;
+    Ydb.ResultSet.Type result_set_type = 12;
 }
 
 message ResultSetMeta {
@@ -196,6 +202,7 @@ message ExecuteQueryResponsePart {
     Ydb.TableStats.QueryStats exec_stats = 5;
 
     TransactionMeta tx_meta = 6;
+    VirtualTimestamp snapshot_timestamp = 7;
 }
 
 message ExecuteScriptRequest {
