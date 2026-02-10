@@ -73,7 +73,7 @@ message TableIndex {
     repeated string data_columns = 5;
 }
 
-// Represent secondary index with index state
+// Represent table index with index state
 message TableIndexDescription {
     enum Status {
         STATUS_UNSPECIFIED = 0;
@@ -175,6 +175,8 @@ message Changefeed {
     google.protobuf.Duration resolved_timestamps_interval = 9;
     // Partitioning settings of underlying topic.
     Topic.PartitioningSettings topic_partitioning_settings = 10;
+    // Emit schema change events or not
+    bool schema_changes = 11;
 }
 
 message ChangefeedDescription {
@@ -193,6 +195,11 @@ message ChangefeedDescription {
         STATE_INITIAL_SCAN = 3;
     }
 
+    message InitialScanProgress {
+        uint32 parts_total = 1;
+        uint32 parts_completed = 2;
+    }
+
     // Name of the feed
     string name = 1;
     // Mode specifies the information that will be written to the feed
@@ -209,6 +216,10 @@ message ChangefeedDescription {
     string aws_region = 7;
     // Interval of emitting of resolved timestamps. If unspecified, resolved timestamps are not emitted.
     google.protobuf.Duration resolved_timestamps_interval = 8;
+    // Progress of initial scan. If unspecified, initial scan was not launched.
+    InitialScanProgress initial_scan_progress = 9;
+    // State of emitting of schema change events
+    bool schema_changes = 10;
 }
 
 message StoragePool {
@@ -369,7 +380,7 @@ message ColumnMeta {
 }
 
 message DateTypeColumnModeSettings {
-    // The row will be considered as expired at the moment of time, when the value
+    // The row will be considered as expired or assigned a tier at the moment of time, when the value
     // stored in <column_name> is less than or equal to the current time (in epoch
     // time format), and <expire_after_seconds> has passed since that moment;
     // i.e. the expiration threshold is the value of <column_name> plus <expire_after_seconds>.
@@ -529,7 +540,7 @@ message CreateTableRequest {
     // Table profile
     TableProfile profile = 5;
     Ydb.Operations.OperationParams operation_params = 6;
-    // List of secondary indexes
+    // List of table indexes
     repeated TableIndex indexes = 7;
     // Table rows time to live settings
     TtlSettings ttl_settings = 8;
@@ -608,9 +619,9 @@ message AlterTableRequest {
         TtlSettings set_ttl_settings = 7;
         google.protobuf.Empty drop_ttl_settings = 8;
     }
-    // Add secondary indexes
+    // Add table indexes
     repeated TableIndex add_indexes = 9;
-    // Remove secondary indexes
+    // Remove table indexes
     repeated string drop_indexes = 10;
     // Change table storage settings
     StorageSettings alter_storage_settings = 11;
@@ -718,6 +729,8 @@ message DescribeTableRequest {
     bool include_table_stats = 6;
     // Includes partition statistics (required include_table_statistics)
     bool include_partition_stats = 7;
+    // Includes set_val settings for sequences
+    bool include_set_val = 8;
     // Includes shard -> node id maping (required include_partition_stats)
     bool include_shard_nodes_info = 9;
 }
@@ -785,6 +798,7 @@ message OnlineModeSettings {
 
 message StaleModeSettings {
 }
+
 
 message SnapshotModeSettings {
 }
@@ -1184,7 +1198,7 @@ message ExecuteScanQueryRequest {
     QueryStatsCollection.Mode collect_stats = 8;
     // works only in mode: MODE_EXPLAIN,
     // collects additional diagnostics about query compilation, including query plan and scheme
-    bool collect_full_diagnostics = 9;
+    bool collect_full_diagnostics = 9 [deprecated=true];
 }
 
 message ExecuteScanQueryPartialResponse {
@@ -1202,5 +1216,7 @@ message ExecuteScanQueryPartialResult {
     Ydb.TableStats.QueryStats query_stats = 6;
     // works only in mode: MODE_EXPLAIN,
     // collects additional diagnostics about query compilation, including query plan and scheme
-    string query_full_diagnostics = 7;
+    string query_full_diagnostics = 7 [deprecated = true];
+    // Optional snapshot that corresponds to the returned data
+    VirtualTimestamp snapshot = 8;
 }
