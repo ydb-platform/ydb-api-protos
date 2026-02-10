@@ -86,4 +86,13 @@ service TableService {
 
     // Executes scan query with streaming result.
     rpc StreamExecuteScanQuery(Table.ExecuteScanQueryRequest) returns (stream Table.ExecuteScanQueryPartialResponse);
+
+    // Returns information about a given external data source.
+    rpc DescribeExternalDataSource(Table.DescribeExternalDataSourceRequest) returns (Table.DescribeExternalDataSourceResponse);
+
+    // Returns information about a given external table.
+    rpc DescribeExternalTable(Table.DescribeExternalTableRequest) returns (Table.DescribeExternalTableResponse);
+
+    // Returns information about a given system view table.
+    rpc DescribeSystemView(Table.DescribeSystemViewRequest) returns (Table.DescribeSystemViewResponse);
 }
