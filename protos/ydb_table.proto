@@ -417,10 +417,32 @@ message ValueSinceUnixEpochModeSettings {
     uint32 expire_after_seconds = 3;
 }
 
+message EvictionToExternalStorageSettings {
+    // Path to external data source
+    string storage = 1;
+}
+
+message TtlTier {
+    oneof expression {
+        DateTypeColumnModeSettings date_type_column = 1;
+        ValueSinceUnixEpochModeSettings value_since_unix_epoch = 2;
+    }
+
+    oneof action {
+        google.protobuf.Empty delete = 3;
+        EvictionToExternalStorageSettings evict_to_external_storage = 4;
+    }
+}
+
+message TieredModeSettings {
+    repeated TtlTier tiers = 1;
+}
+
 message TtlSettings {
     oneof mode {
         DateTypeColumnModeSettings date_type_column = 1;
         ValueSinceUnixEpochModeSettings value_since_unix_epoch = 2;
+        TieredModeSettings tiered_ttl = 4;
     }
 
     // There is no guarantee that expired row will be deleted immediately upon
