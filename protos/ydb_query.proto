@@ -45,9 +45,17 @@ message AttachSessionRequest {
     string session_id = 1 [(Ydb.length).le = 1024];
 }
 
+// Sent by server when this session is being gracefully terminated.
+// Server will attempt to complete in-flight requests within the soft deadline; 
+// requests still running at the hard deadline will be cancelled.
+// Client should not reuse the session after receiving this hint.
 message SessionShutdownHint {
 }
 
+// Sent by server when the node is being gracefully shut down.
+// Server will attempt to complete in-flight requests within the soft deadline;
+// requests still running at the hard deadline will be cancelled.
+// Client should not create new sessions on this node.
 message NodeShutdownHint {
 }
 
@@ -154,7 +162,7 @@ message RollbackTransactionResponse {
 enum Syntax {
     SYNTAX_UNSPECIFIED = 0;
     SYNTAX_YQL_V1 = 1; // YQL
-    SYNTAX_PG = 2; // PostgresQL
+    SYNTAX_PG = 2 [deprecated = true]; // Removed: PostgreSQL syntax is no longer supported
 }
 
 message QueryContent {
@@ -200,7 +208,7 @@ message ExecuteQueryRequest {
         QueryContent query_content = 4;
     }
 
-    map<string, TypedValue> parameters = 6;
+    map<string, TypedValue> parameters = 6 [(Ydb.sensitive) = true];
     StatsMode stats_mode = 7;
 
     // For queries with multiple result sets, some of them may be computed concurrently.
@@ -261,7 +269,7 @@ message ExecuteScriptRequest {
 
     QueryContent script_content = 3;
 
-    map<string, TypedValue> parameters = 4;
+    map<string, TypedValue> parameters = 4 [(Ydb.sensitive) = true];
 
     StatsMode stats_mode = 5;
 
