@@ -81,6 +81,9 @@ message SnapshotRWModeSettings {
 message ReadCommittedRWModeSettings {
 }
 
+message StrictSerializableRWModeSettings {
+}
+
 message TransactionSettings {
     oneof tx_mode {
         SerializableModeSettings serializable_read_write = 1;
@@ -89,6 +92,7 @@ message TransactionSettings {
         SnapshotModeSettings snapshot_read_only = 4;
         SnapshotRWModeSettings snapshot_read_write = 5;
         ReadCommittedRWModeSettings read_committed_read_write = 6;
+        StrictSerializableRWModeSettings strict_serializable_read_write = 7;
     }
 }
 
@@ -129,6 +133,10 @@ message CommitTransactionRequest {
 message CommitTransactionResponse {
     StatusIds.StatusCode status = 1;
     repeated Ydb.Issue.IssueMessage issues = 2;
+
+    // Commit timestamp (PlanStep, TxId) for StrictSerializableRW write transactions.
+    // Present only on SUCCESS and when the transaction had write effects.
+    Ydb.VirtualTimestamp commit_timestamp = 3;
 }
 
 message RollbackTransactionRequest {
@@ -239,6 +247,11 @@ message ExecuteQueryResponsePart {
     Ydb.TableStats.QueryStats exec_stats = 5;
 
     TransactionMeta tx_meta = 6;
+    VirtualTimestamp snapshot_timestamp = 7;
+
+    // Commit timestamp (PlanStep, TxId) for StrictSerializableRW write transactions.
+    // Present only in the final (trailing) part on SUCCESS and when the transaction had write effects.
+    VirtualTimestamp commit_timestamp = 8;
 }
 
 message ExecuteScriptRequest {
