@@ -1,6 +1,7 @@
 syntax = "proto3";
 option cc_enable_arenas = true;
 
+import "protos/annotations/sensitive.proto";
 import "protos/annotations/validation.proto";
 import "protos/ydb_common.proto";
 import "protos/ydb_issue_message.proto";
