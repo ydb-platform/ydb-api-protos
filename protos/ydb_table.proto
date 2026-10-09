@@ -49,6 +49,25 @@ message DeleteSessionResponse {
     Ydb.Operations.Operation operation = 1;
 }
 
+message GlobalIndexSettings {
+    oneof partitions {
+        // Enable uniform partitioning of the table that implements the index using the specified partition count.
+        // Note that the index columns must be of type Uint32 or Uint64.
+        uint64 uniform_partitions = 1;
+        // Explicitly specify the key values of the index columns that define the partition boundaries
+        // for the table implementing the index.
+        ExplicitPartitions partition_at_keys = 2;
+    }
+    // Partitioning settings for the table that implements the index.
+    PartitioningSettings partitioning_settings = 3;
+    ReadReplicasSettings read_replicas_settings = 4;
+
+    /**
+     * The metrics configuration for the given index.
+     */
+    optional MetricsSettings metrics_settings = 5;
+}
+
 message GlobalIndex {
 }
 
@@ -56,6 +75,10 @@ message GlobalAsyncIndex {
 }
 
 message GlobalUniqueIndex {
+}
+
+message GlobalJsonIndex {
+    GlobalIndexSettings settings = 1;
 }
 
 // Represent secondary index
@@ -69,6 +92,7 @@ message TableIndex {
        GlobalIndex global_index = 3;
        GlobalAsyncIndex global_async_index = 4;
        GlobalUniqueIndex global_unique_index = 6;
+       GlobalJsonIndex global_json_index = 12;
     }
     // list of columns content to be copied in to index table
     repeated string data_columns = 5;
@@ -92,6 +116,7 @@ message TableIndexDescription {
        GlobalIndex global_index = 3;
        GlobalAsyncIndex global_async_index = 5;
        GlobalUniqueIndex global_unique_index = 8;
+       GlobalJsonIndex global_json_index = 14;
     }
     Status status = 4;
     // list of columns content to be copied in to index table
@@ -521,6 +546,45 @@ message ReadReplicasSettings {
 
     // Specify read replicas count for each AZ in cluster
     reserved 3; // cluster_replicas_settings (part of oneof settings)
+}
+
+message MetricsSettings {
+    /**
+     * The level at which metrics are aggregated and reported.
+     */
+    enum MetricsLevel {
+        /**
+         * The metrics level is not specified.
+         */
+        METRICS_LEVEL_UNSPECIFIED = 0;
+
+        /**
+         * All metrics are disabled.
+         */
+        METRICS_LEVEL_DISABLED = 1;
+
+        /**
+         * Metrics are aggregated and reported for the entire database.
+         */
+        METRICS_LEVEL_DATABASE = 2;
+
+        /**
+         * Metrics are aggregated and reported for individual tables.
+         */
+        METRICS_LEVEL_TABLE = 3;
+
+        /**
+         * Metrics are aggregated and reported for individual partitions.
+         */
+        METRICS_LEVEL_PARTITION = 4;
+    }
+
+    /**
+     * The level at which metrics are aggregated and reported.
+     *
+     * @note If this value is not set, METRICS_LEVEL_DATABASE is assumed.
+     */
+    MetricsLevel metrics_level = 1;
 }
 
 enum StoreType {
