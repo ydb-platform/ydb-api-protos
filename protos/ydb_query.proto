@@ -238,6 +238,11 @@ message ExecuteQueryRequest {
 
     // Format settings, only used for Ydb.ResultSet.Format.FORMAT_ARROW
     Ydb.Formats.ArrowFormatSettings arrow_format_settings = 14;
+
+    // Enable PostgreSQL-like affected_rows statistics collection.
+    // When true, the server counts logical base-table rows affected by DML.
+    // Ignored when stats_mode is STATS_MODE_NONE or unspecified.
+    bool collect_affected_rows = 15;
 }
 
 message ResultSetMeta {

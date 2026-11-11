@@ -20,6 +20,8 @@ message TableAccessStats {
     OperationStats updates = 4;
     OperationStats deletes = 5;
     uint64 partitions_count = 6;
+    // Set only when collect_affected_rows is enabled.
+    optional uint64 affected_rows = 7;
 }
 
 message QueryPhaseStats {
