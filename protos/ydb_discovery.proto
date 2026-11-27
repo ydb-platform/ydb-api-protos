@@ -14,8 +14,8 @@ message ListEndpointsRequest {
     string database = 1;
     repeated string service = 2;
 
+    // A matching hash waits for a change until the gRPC deadline.
     // An empty or stale hash returns the current snapshot immediately.
-    // A matching hash waits for a change until the caller's gRPC deadline.
     bytes snapshot_hash = 3;
 }
 
@@ -52,7 +52,8 @@ message ListEndpointsResult {
     // This field is empty if cluster is not in bridge mode.
     repeated Ydb.Bridge.PileState pile_states = 3;
 
-    // Opaque hash for the next long poll. Empty when long polling is unavailable.
+    // Echo this opaque hash in the next request to wait for a change.
+    // An empty hash means the server does not offer long polling.
     bytes snapshot_hash = 4;
 }
 
